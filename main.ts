@@ -5,10 +5,11 @@
 
 import { buildDossier } from "./vendor/makefun-app.ts";
 import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR || "/output";
-const REPO_DIR = process.cwd();
+const REPO_DIR = dirname(fileURLToPath(import.meta.url));
 
 function isDotName(name: string): boolean {
   return name.startsWith(".");
