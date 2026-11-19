@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Cover Studio — offline cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Vice City Cover Studio</h1>
+  <p>Turn your photos into a neon-sunset poster cover. Fully offline — photos never leave your machine.</p>
+</header>
+<main class="workspace">
+  <section class="panel" aria-label="Photos, layout and grade">
+    <h2>1 · Photos</h2>
+    <label for="photoInput">Load photos from your machine</label>
+    <input id="photoInput" type="file" accept="image/*" multiple>
+    <p class="hint">Or drop image files straight onto the preview. One photo can fill several panels.</p>
+    <button id="sampleBoulevard" type="button">Try a sample photo: Boulevard</button>
+    <button id="samplePier" type="button">Try a sample photo: Pier</button>
+    <button id="loadBothSamples" type="button">Load both samples</button>
+    <div id="photoStrip" class="photo-strip"></div>
+
+    <h3>Layout</h3>
+    <div class="layout-grid">
+      <button type="button" data-layout="single">Single hero</button>
+      <button type="button" data-layout="hero3">Hero + 3</button>
+      <button type="button" data-layout="split2">2-panel split</button>
+      <button type="button" data-layout="strip3">3-panel strip</button>
+      <button type="button" data-layout="grid4">4-panel grid</button>
+    </div>
+
+    <h3>Colour grade</h3>
+    <div class="grade-row">
+      <button type="button" data-grade="sunset">Sunset</button>
+      <button type="button" data-grade="neon">Neon Night</button>
+      <button type="button" data-grade="golden">Golden Hour</button>
+      <button type="button" data-grade="noir">Mono Noir</button>
+    </div>
+    <label for="gradeStrength">Grade strength: <span id="gradeStrengthValue">70%</span></label>
+    <input id="gradeStrength" type="range" min="0" max="100" value="70">
+  </section>
+
+  <section class="preview-wrap" aria-label="Live preview">
+    <h2>Live preview — click a panel, drag to move its photo</h2>
+    <canvas id="previewCanvas" width="620" height="620"></canvas>
+    <div id="panelTabs" class="panel-tabs"></div>
+    <p class="hint">Click a panel above, or click straight on the preview, then change its photo, zoom and position below.</p>
+    <p id="statusLine" class="status-line" role="status"></p>
+  </section>
+
+  <section class="panel" aria-label="Caption and download">
+    <h2>2 · Selected panel</h2>
+    <p id="panelLabel" class="hint">Panel 1 of 4</p>
+    <label for="panelPhoto">Photo in this panel</label>
+    <select id="panelPhoto"></select>
+    <label for="panelZoom">Zoom: <span id="zoomValue">100%</span></label>
+    <input id="panelZoom" type="range" min="100" max="300" value="100">
+    <label for="panelDx">Move left / right</label>
+    <input id="panelDx" type="range" min="-50" max="50" value="0">
+    <label for="panelDy">Move up / down</label>
+    <input id="panelDy" type="range" min="-50" max="50" value="0">
+    <button id="fillPanel" type="button" class="wide">Fill panel with this photo</button>
+
+    <h3>3 · Caption</h3>
+    <label for="titleInput">Big title</label>
+    <input id="titleInput" type="text" value="VICE CITY" maxlength="40">
+    <label for="subtitleInput">Neon script line</label>
+    <input id="subtitleInput" type="text" value="a Leonida story" maxlength="60">
+    <label for="titleSize">Title size: <span id="titleSizeValue">96 px</span></label>
+    <input id="titleSize" type="range" min="48" max="180" value="96">
+    <label for="titleY">Title height: <span id="titleYValue">76%</span></label>
+    <input id="titleY" type="range" min="30" max="92" value="76">
+    <label for="titleColor">Title colour</label>
+    <select id="titleColor">
+      <option value="#ffffff">White</option>
+      <option value="#ffd23f">Sunset yellow</option>
+      <option value="#ff5ea8">Neon pink</option>
+      <option value="#7ef9ff">Neon cyan</option>
+    </select>
+
+    <h3>4 · Download PNG</h3>
+    <label>Preview size</label>
+    <div class="size-row">
+      <button type="button" data-size="square">Square</button>
+      <button type="button" data-size="portrait">Portrait</button>
+      <button type="button" data-size="wide">Wide</button>
+    </div>
+    <button id="downloadSquare" type="button" class="primary wide">Download 1080 x 1080</button>
+    <button id="downloadPortrait" type="button" class="primary wide">Download 1080 x 1350</button>
+    <button id="downloadWide" type="button" class="primary wide">Download 1920 x 1080</button>
+    <button id="downloadAll" type="button" class="wide">Download all three sizes</button>
+    <button id="resetState" type="button" class="wide">Reset to the sample cover</button>
+    <p class="hint">Your layout, caption and grades are saved in this browser, so the cover is still here when you come back. Photos are not saved — load them again or use the samples.</p>
+  </section>
+</main>
+<footer class="foot">Vice City Cover Studio — an original offline cover maker. Not affiliated with Rockstar Games; no Rockstar logos, artwork or fonts are used.</footer>
+<script src="js/state.js"></script>
+<script src="js/cover.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

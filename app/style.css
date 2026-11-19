@@ -1,0 +1,153 @@
+/* Vice City Cover Studio — editor styles. System fonts only, no web fonts. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: #14101d;
+  color: #f2ecff;
+  min-height: 100vh;
+}
+header.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 18px;
+  background: linear-gradient(90deg, #ff7a18, #ff2e88 55%, #7b2ff7);
+  color: #fff;
+}
+header.topbar h1 {
+  margin: 0;
+  font-family: "Arial Black", Impact, sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+header.topbar p { margin: 0; font-size: 13px; opacity: 0.95; }
+main.workspace {
+  display: grid;
+  grid-template-columns: 268px minmax(320px, 1fr) 268px;
+  gap: 14px;
+  padding: 14px 16px 20px;
+  align-items: start;
+}
+section.panel {
+  background: #1e1830;
+  border: 1px solid #3a2f5e;
+  border-radius: 10px;
+  padding: 12px;
+}
+section.panel h2 {
+  margin: 0 0 10px;
+  font-family: "Arial Black", Impact, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffb347;
+}
+section.panel h3 {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c9b8ff;
+}
+section.panel label { display: block; font-size: 13px; margin: 8px 0 3px; }
+section.panel input[type="text"],
+section.panel select {
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: 6px;
+  border: 1px solid #4a3d75;
+  background: #120e1e;
+  color: #f2ecff;
+  font-size: 14px;
+}
+section.panel input[type="range"] { width: 100%; }
+section.panel input[type="file"] { width: 100%; font-size: 12px; }
+button {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  border: 1px solid #4a3d75;
+  background: #2a2144;
+  color: #f2ecff;
+  cursor: pointer;
+}
+button:hover { background: #3a2d63; }
+button.primary {
+  background: linear-gradient(90deg, #ff7a18, #ff2e88);
+  border: none;
+  font-weight: bold;
+  color: #fff;
+}
+button.primary:hover { filter: brightness(1.12); }
+button.wide { width: 100%; margin-top: 6px; }
+button.active { outline: 2px solid #ffb347; background: #4a2a6e; }
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.layout-grid button { padding: 7px 4px; font-size: 12px; }
+.grade-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.grade-row button { flex: 1 1 44%; }
+.photo-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.photo-strip figure { margin: 0; width: 72px; cursor: pointer; }
+.photo-strip img {
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  display: block;
+}
+.photo-strip figure.picked img { border-color: #ffb347; }
+.photo-strip figcaption {
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hint { font-size: 12px; color: #b9aede; line-height: 1.45; margin: 8px 0 0; }
+.preview-wrap {
+  background: #1e1830;
+  border: 1px solid #3a2f5e;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.preview-wrap h2 {
+  margin: 0 0 8px;
+  font-family: "Arial Black", Impact, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffb347;
+  text-align: left;
+}
+#previewCanvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  cursor: grab;
+  background: #0d0a16;
+}
+#previewCanvas.dragging { cursor: grabbing; }
+#previewCanvas.drop-ready { outline: 3px dashed #ffb347; outline-offset: 4px; }
+.panel-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; justify-content: center; }
+.panel-tabs button { padding: 6px 10px; }
+.size-row { display: flex; gap: 6px; margin-top: 6px; }
+.size-row button { flex: 1; }
+.status-line { font-size: 12px; color: #9be8a9; min-height: 16px; margin-top: 8px; }
+footer.foot {
+  padding: 10px 18px 18px;
+  font-size: 12px;
+  color: #8f83b8;
+}
+@media (max-width: 900px) {
+  main.workspace { grid-template-columns: 1fr; }
+}
