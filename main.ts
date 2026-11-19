@@ -43,6 +43,9 @@ function copyDirIfPresent(name: string): boolean {
 function main(): void {
   mkdirSync(OUTPUT_DIR, { recursive: true });
   copyDirIfPresent("app");
+  if (!existsSync(join(OUTPUT_DIR, "app", "index.html"))) {
+    throw new Error("app entrypoint was not copied: app/index.html missing from output");
+  }
   const hasScreenshots = copyDirIfPresent("screenshots");
   const shotDir = join(OUTPUT_DIR, "screenshots");
   const shotCount = hasScreenshots
@@ -52,6 +55,9 @@ function main(): void {
     if (existsSync(shotDir)) rmSync(shotDir, { recursive: true, force: true });
     console.log("No screenshots yet: copied app/ only. Add screenshots/ (3 or 4 PNG or JPEG renders) and run again to write dossier.json.");
     return;
+  }
+  if (shotCount < 3 || shotCount > 4) {
+    console.log(`Warning: expected 3 or 4 screenshots, found ${shotCount}.`);
   }
   const dossier = buildDossier(OUTPUT_DIR, {
     text_max_bytes: 163840,
